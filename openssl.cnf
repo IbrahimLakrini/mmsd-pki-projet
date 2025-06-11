@@ -1,0 +1,61 @@
+
+[ ca ]
+default_ca = CA_default
+
+[ CA_default ]
+dir               = ./ca
+certs             = $dir/certs
+crl_dir           = $dir/crl
+new_certs_dir     = $dir/newcerts
+database          = $dir/index.txt
+serial            = $dir/serial
+RANDFILE          = $dir/private/.rand
+
+private_key       = $dir/private/ca.key
+certificate       = $dir/certs/ca.crt
+
+crlnumber         = $dir/crlnumber
+crl               = $dir/crl/ca.crl.pem
+crl_extensions    = crl_ext
+default_crl_days  = 30
+
+default_md        = sha256
+name_opt          = ca_default
+cert_opt          = ca_default
+default_days      = 365
+preserve          = no
+policy            = policy_loose
+
+[ policy_loose ]
+countryName             = optional
+stateOrProvinceName     = optional
+localityName            = optional
+organizationName        = optional
+organizationalUnitName  = optional
+commonName              = supplied
+emailAddress            = optional
+
+[ req ]
+default_bits        = 2048
+prompt              = no
+default_md          = sha256
+req_extensions      = req_ext
+distinguished_name  = req_distinguished_name
+
+[ req_distinguished_name ]
+countryName            = US
+stateOrProvinceName    = California
+localityName           = San Francisco
+organizationName       = My Organization
+commonName             = example.com
+emailAddress           = admin@example.com
+
+[ req_ext ]
+subjectAltName = @alt_names
+
+[ alt_names ]
+DNS.1   = example.com
+DNS.2   = www.example.com
+
+[ crl_ext ]
+authorityKeyIdentifier=keyid:always

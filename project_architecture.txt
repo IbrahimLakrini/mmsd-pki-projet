@@ -1,0 +1,30 @@
+
+Project Architecture: PKI Flask Web Application
+
+project_root/
+│
+├── app.py                          # Main Flask application
+├── templates/                      # HTML templates for web interface
+│   ├── index.html
+│   ├── generate_key.html
+│   ├── generate_csr.html
+│   ├── sign_certificate.html
+│   ├── verify_certificate.html
+│   └── verify_result.html
+│
+├── static/                         # Static files (CSS, JS, Images)
+│
+├── uploads/                        # Uploaded CSR or certificate files
+│
+├── ca/                             # Certificate Authority structure
+│   ├── private/                    # Private keys (CA key, user keys)
+│   ├── certs/                      # Signed certificates (CA and others)
+│   ├── csr/                        # Certificate Signing Requests
+│   ├── newcerts/                   # Storage for newly issued certs
+│   ├── crl/                        # Certificate Revocation Lists (CRL)
+│   ├── index.txt                   # Database of issued certificates
+│   └── serial                      # Serial number tracker for certs
+│
+├── openssl.cnf                     # OpenSSL configuration file (external)
+│
+└── README.md                       # Project description and usage guide (optional)
